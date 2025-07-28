@@ -1,0 +1,22 @@
+1. In package.json
+
+	"scripts": {
+		"start": "node app.js", // used in depolyment mode
+		"dev": "nodemon app", // used in development mode
+		"prod": "SET NODE_ENV=production & nodemon app.js" //used in production mode
+	},
+
+2. Basic server setup
+
+    const express = require("express");
+    const app = express();
+    const dotenv = require("dotenv");
+
+    //Setting up config.env variables
+    dotenv.config({ path: "./config/config.env" });
+    const PORT = process.env.PORT;
+    app.listen(PORT, () => {
+        console.log(
+            `Server is running on port ${PORT} in ${process.env.NODE_ENV} mode`
+        );
+    });
